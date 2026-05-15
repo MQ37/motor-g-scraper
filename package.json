@@ -1,0 +1,26 @@
+{
+  "name": "motor-g-scraper",
+  "version": "1.0.0",
+  "description": "Crawlee-based scraper for motor-g.com — extracts UAV drone motor products with specs and KV variants",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/scraper.ts",
+    "scrape": "tsx src/scraper.ts"
+  },
+  "keywords": [
+    "scraper",
+    "crawlee",
+    "motor-g"
+  ],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.25.0",
+  "dependencies": {
+    "@types/node": "^25.8.0",
+    "apify": "^3.7.2",
+    "cheerio": "^1.2.0",
+    "crawlee": "^3.16.0",
+    "tsx": "^4.22.0",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,31 @@
+{
+    "title": "Motor-G Scraper Input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "startUrls": {
+            "title": "Start URLs",
+            "type": "array",
+            "description": "URLs to start crawling from. Defaults to motor-g.com collection page.",
+            "editor": "requestListSources",
+            "prefill": [
+                {
+                    "url": "https://motor-g.com/en/collections/all"
+                }
+            ],
+            "default": [
+                {
+                    "url": "https://motor-g.com/en/collections/all"
+                }
+            ]
+        },
+        "maxProducts": {
+            "title": "Max Products",
+            "type": "integer",
+            "description": "Maximum number of product detail pages to scrape.",
+            "default": 50,
+            "minimum": 1,
+            "maximum": 200
+        }
+    }
+}

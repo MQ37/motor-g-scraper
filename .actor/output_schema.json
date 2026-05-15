@@ -1,0 +1,41 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Motor-G Drone Motor Scraper Output",
+    "description": "Structured product data from motor-g.com — Ukrainian drone/UAV motor manufacturer.",
+    "properties": {
+        "overview": {
+            "type": "string",
+            "title": "Product Overview",
+            "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+        }
+    },
+    "views": {
+        "overview": {
+            "title": "Products",
+            "transformation": {
+                "fields": [
+                    "title",
+                    "price",
+                    "currency",
+                    "tags",
+                    "specs.topology",
+                    "specs.magnets",
+                    "specs.heatResistantWinding",
+                    "url"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "columns": [
+                    { "field": "title", "label": "Product" },
+                    { "field": "price", "label": "Price" },
+                    { "field": "currency", "label": "Currency" },
+                    { "field": "tags", "label": "Tags" },
+                    { "field": "specs.topology", "label": "Topology" },
+                    { "field": "specs.magnets", "label": "Magnets" },
+                    { "field": "specs.heatResistantWinding", "label": "Winding" }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "actorSpecification": 1,
+    "name": "motor-g-scraper",
+    "title": "Motor-G Drone Motor Scraper",
+    "description": "Scrapes all drone/UAV motor products from motor-g.com — a Ukrainian manufacturer. Extracts product specs (topology, magnets, winding), pricing, KV variants, images, and tags.",
+    "version": "0.1",
+    "meta": {
+        "templateId": "ts-crawlee-cheerio"
+    },
+    "input": "./input_schema.json",
+    "output": "./output_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "dockerfile": "../Dockerfile"
+}
