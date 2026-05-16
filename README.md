@@ -1,33 +1,17 @@
-# Motor-G Scraper
+# motor-g-scraper
 
-Apify Actor that scrapes UAV drone motor products from [motor-g.com](https://motor-g.com) — a Ukrainian manufacturer of brushless drone motors with configurable KV variants.
+Apify Actor that scrapes brushless drone motor products from [motor-g.com](https://motor-g.com) — a Ukrainian manufacturer with configurable KV variants.
 
 ## What it scrapes
 
-Extracts structured product data from the Shopify-powered storefront:
-- Product title, vendor, type, tags
-- Price (UAH) per KV variant
-- Technical specifications (topology, magnets, heat-resistant winding, dimensions)
-- KV variant options with availability
-- Product images (full resolution)
-- SKU codes
+Extracts structured product data from the Shopify-powered storefront: product title, vendor, type, tags, price per KV variant, technical specifications (topology, magnets, winding, dimensions), KV variant options with availability, product images, and SKU codes.
 
-## Stack
-
-- **Crawlee** + CheerioCrawler
-- **Cheerio** — HTML parsing
-- **Shopify JSON API** (`/products/{handle}.js`) for base product data
-- **ShopifyAnalytics.meta** for collection-level product discovery
-- Node.js 22+
-
-## Usage
+## Quick start
 
 ```bash
 pnpm install
-pnpm start
+pnpm start       # run with tsx
 ```
-
-Output is stored in `storage/datasets/default/` as JSON files.
 
 ## Input
 
@@ -40,12 +24,12 @@ Output is stored in `storage/datasets/default/` as JSON files.
 }
 ```
 
-| Field | Type | Default | Description |
+| Parameter | Type | Default | Description |
 |---|---|---|---|
-| `startUrls` | array | All products collection | Collection URLs to crawl |
-| `maxProducts` | integer | 50 | Max products to scrape |
+| `startUrls` | array | — | Collection URLs to crawl |
+| `maxProducts` | number | `50` | Max products to extract |
 
-## Output shape
+## Output schema
 
 ```json
 {
@@ -81,11 +65,14 @@ Output is stored in `storage/datasets/default/` as JSON files.
 }
 ```
 
-## Scraping target
+## Site structure
 
-| Detail | Value |
-|---|---|
-| Site | https://motor-g.com |
-| Collection | `/en/collections/all` |
-| Products | ~50 (configurable) |
-| Tech | Shopify (server-rendered + JSON API) |
+motor-g.com runs on Shopify with server-rendered collection and product pages. Product data is also exposed via the Shopify JSON API (`/products/{handle}.js`). Product discovery uses `ShopifyAnalytics.meta` on collection pages.
+
+## Tech stack
+
+- **Crawlee** — CheerioCrawler
+- **Cheerio** — HTML parsing
+- **Shopify JSON API** — supplemental product data
+- **Apify SDK** — Actor lifecycle + dataset storage
+- Node.js 22+
